@@ -1,5 +1,10 @@
 import React from "react";
 import { CiHome } from "react-icons/ci";
+import { CiHashtag } from "react-icons/ci";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { CiUser } from "react-icons/ci";
+import { CiBookmark } from "react-icons/ci";
+import { AiOutlineLogout } from "react-icons/ai";
 
 function LeftSidebar() {
   return (
@@ -7,6 +12,7 @@ function LeftSidebar() {
       <div>
         <div>
           <img
+            className="ml-4"
             src="https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg?w=826&t=st=1710773910~exp=1710774510~hmac=e2af4197d0fd55a28a2af4b9b2e658db38a408ece8f6d8f1b868a8af2305a58a"
             width={24}
             alt="twitter logo"
@@ -21,22 +27,37 @@ function LeftSidebar() {
           </div>
           <div className="flex items-center my-2 px-4 py-2 hover:bg-gray-200 hover:cursor-pointer rounded-full">
             <div>
-              <CiHome size="24px" />
+              <CiHashtag size="24px" />
             </div>
-            <h1 className="font-bold text-lg ml-2">Home</h1>
+            <h1 className="font-bold text-lg ml-2">Explore</h1>
           </div>
           <div className="flex items-center my-2 px-4 py-2 hover:bg-gray-200 hover:cursor-pointer rounded-full">
             <div>
-              <CiHome size="24px" />
+              <IoIosNotificationsOutline size="24px" />
             </div>
-            <h1 className="font-bold text-lg ml-2">Home</h1>
+            <h1 className="font-bold text-lg ml-2">Notification</h1>
           </div>
           <div className="flex items-center my-2 px-4 py-2 hover:bg-gray-200 hover:cursor-pointer rounded-full">
             <div>
-              <CiHome size="24px" />
+              <CiUser size="24px" />
             </div>
-            <h1 className="font-bold text-lg ml-2">Home</h1>
+            <h1 className="font-bold text-lg ml-2">Profile</h1>
           </div>
+          <div className="flex items-center my-2 px-4 py-2 hover:bg-gray-200 hover:cursor-pointer rounded-full">
+            <div>
+              <CiBookmark size="24px" />
+            </div>
+            <h1 className="font-bold text-lg ml-2">Bookmarks</h1>
+          </div>
+          <div className="flex items-center my-2 px-4 py-2 hover:bg-gray-200 hover:cursor-pointer rounded-full">
+            <div>
+              <AiOutlineLogout size="24px" />
+            </div>
+            <h1 className="font-bold text-lg ml-2">Logout</h1>
+          </div>
+          <button className="px-4 py-2 border-none text-lg bg-[#1D9BF0] w-full rounded-full text-white font-bold">
+            Post
+          </button>
         </div>
       </div>
     </div>
