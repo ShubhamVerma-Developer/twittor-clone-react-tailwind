@@ -8,7 +8,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 
 function LeftSidebar() {
   return (
-    <div>
+    <div className="w-[20%]">
       <div>
         <div>
           <img
