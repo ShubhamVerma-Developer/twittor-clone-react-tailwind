@@ -4,6 +4,7 @@ import {
   Logout,
   Register,
   Bookmarks,
+  getMyProfile,
 } from "../controllers/userController.js";
 import isAuthenticated from "../config/Auth.js";
 
@@ -13,5 +14,6 @@ router.route("/register").post(Register);
 router.route("/login").post(Login);
 router.route("/logout").get(Logout);
 router.route("/bookmark/:id").put(isAuthenticated, Bookmarks);
+router.route("/profile/:id").get(isAuthenticated, getMyProfile);
 
 export default router;
