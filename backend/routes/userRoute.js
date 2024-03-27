@@ -5,6 +5,8 @@ import {
   Register,
   Bookmarks,
   getMyProfile,
+  getOtherUsers,
+  follow,
 } from "../controllers/userController.js";
 import isAuthenticated from "../config/Auth.js";
 
@@ -15,5 +17,7 @@ router.route("/login").post(Login);
 router.route("/logout").get(Logout);
 router.route("/bookmark/:id").put(isAuthenticated, Bookmarks);
 router.route("/profile/:id").get(isAuthenticated, getMyProfile);
+router.route("/otheruser/:id").get(isAuthenticated, getOtherUsers);
+router.route("/follow/:id").post(isAuthenticated, follow);
 
 export default router;
