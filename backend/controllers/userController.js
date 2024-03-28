@@ -56,7 +56,6 @@ export const Login = async (req, res) => {
     }
 
     const isMatch = await bcryptjs.compare(password, user.password);
-    console.log(isMatch);
 
     if (!isMatch) {
       return res.status(401).json({
@@ -65,7 +64,6 @@ export const Login = async (req, res) => {
       });
     }
 
-    console.log(isMatch);
     const tokenData = {
       userId: user._id,
     };
@@ -134,7 +132,6 @@ export const getMyProfile = async (req, res) => {
 export const getOtherUsers = async (req, res) => {
   try {
     const id = req.params.id;
-    console.log(id);
     const otherUsers = await User.find({ _id: { $ne: id } }).select(
       "-passowrd"
     );

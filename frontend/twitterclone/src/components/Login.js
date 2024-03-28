@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { USER_API_END_POINT } from "../utils/constant";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -14,17 +15,51 @@ const Login = () => {
     console.log(name, username, email, password);
     if (isLogin) {
       // login
+      try {
+        const res = await axios.post(
+          `${USER_API_END_POINT}/login`,
+          {
+            email,
+            password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        );
+        if (res.data.success) {
+          toast.success(res.data["message"]);
+        }
+      } catch (error) {
+        toast.success(error.response.data.messsage);
+        console.log(error);
+      }
     } else {
       // signup
       try {
-        const res = await axios.post(`${USER_API_END_POINT}/register`, {
-          name,
-          email,
-          username,
-          password,
-        });
-        console.log(res);
+        const res = await axios.post(
+          `${USER_API_END_POINT}/register`,
+          {
+            name,
+            email,
+            username,
+            password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        );
+        if (res.data.success) {
+          setIsLogin(true);
+          toast.success(res.data["message"]);
+        }
       } catch (error) {
+        toast.success(error.response.data.messsage);
         console.log(error);
       }
     }
