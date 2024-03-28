@@ -1,6 +1,7 @@
 import { User } from "../models/userSchema.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { Tweet } from "../models/tweetSchema.js";
 
 export const Register = async (req, res) => {
   try {
