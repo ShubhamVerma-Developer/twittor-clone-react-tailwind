@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { USER_API_END_POINT } from "../utils/constant";
+import axios from "axios";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -7,6 +8,27 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log(name, username, email, password);
+    if (isLogin) {
+      // login
+    } else {
+      // signup
+      try {
+        const res = await axios.post(`${USER_API_END_POINT}/register`, {
+          name,
+          email,
+          username,
+          password,
+        });
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   const loginSignupHandler = () => {
     setIsLogin(!isLogin);
@@ -31,7 +53,7 @@ const Login = () => {
             {isLogin ? "Login" : "Signup"}
           </h1>
           <div></div>
-          <form className="flex flex-col w-[55%]">
+          <form onSubmit={submitHandler} className="flex flex-col w-[55%]">
             {!isLogin && (
               <>
                 <input
