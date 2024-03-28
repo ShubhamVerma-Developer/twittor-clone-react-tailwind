@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { USER_API_END_POINT } from "../utils/constant";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { UseDispatch, useDispatch } from "react-redux";
+import { getUser } from "../redux/userSlice";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("shubhamuser2@gmail.com");
+  const [password, setPassword] = useState("12345678");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -29,7 +34,10 @@ const Login = () => {
             withCredentials: true,
           }
         );
+        dispatch(getUser(res?.data?.user));
+        console.log(res.data);
         if (res.data.success) {
+          navigate("/");
           toast.success(res.data["message"]);
         }
       } catch (error) {
