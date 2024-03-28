@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const loginSignupHandler = () => {
     setIsLogin(!isLogin);
@@ -33,23 +37,31 @@ const Login = () => {
                 <input
                   type="text"
                   placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="outline-blue-500 border border-gray-800 px-3 py-2 rounded-full my-1 font-semibold"
                 />
                 <input
                   type="text"
                   placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="outline-blue-500 border border-gray-800 px-3 py-2 rounded-full my-1 font-semibold"
                 />
               </>
             )}
             <input
-              type="text"
+              type="email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="outline-blue-500 border border-gray-800 px-3 py-2 rounded-full my-1 font-semibold"
             />
             <input
               type="text"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="outline-blue-500 border border-gray-800 px-3 py-2 rounded-full my-1 font-semibold"
             />
             <button className="bg-[#1D98F0] border-none py-2 my-4 rounded-full text-lg text-white">
