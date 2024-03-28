@@ -72,8 +72,6 @@ export const Login = async (req, res) => {
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET, {
       expiresIn: "1d",
     });
-    console.log(token);
-
     return res
       .status(201)
       .cookie("token", token, { expiresIn: "1d", httpOnly: true })
@@ -169,6 +167,30 @@ export const follow = async (req, res) => {
     }
     return res.status(200).json({
       message: `${loggedInUser.name} just follow to ${user.name}`,
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const unfollow = async (req, res) => {
+  try {
+    const loggedInUserId = req.body.id;
+    const userId = req.params.id;
+    const loggedInUser = await User.findById(loggedInUserId);
+    const user = await User.findById(userId);
+
+    if (loggedInUser.following.includes(userId)) {
+      await user.updateOne({ $pull: { followers: loggedInUserId } });
+      await loggedInUser.updateOne({ $pull: { following: userId } });
+    } else {
+      return res.status(400).json({
+        message: `User has not followed yet ${user.name}`,
+      });
+    }
+    return res.status(200).json({
+      message: `${loggedInUser.name} unfollow to ${user.name}`,
       success: true,
     });
   } catch (error) {
