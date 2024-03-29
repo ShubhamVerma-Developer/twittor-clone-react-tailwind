@@ -3,7 +3,7 @@ import { USER_API_END_POINT } from "../utils/constant";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { UseDispatch, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUser } from "../redux/userSlice";
 
 const Login = () => {

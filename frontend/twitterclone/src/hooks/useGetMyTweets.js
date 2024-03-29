@@ -13,6 +13,7 @@ const useGetMyTweets = async (id) => {
         });
         console.log(res.data);
         dispatch(getAllTweets(res.data.tweets));
+        console.log(res.data.tweets);
       } catch (error) {
         console.log(error);
       }
