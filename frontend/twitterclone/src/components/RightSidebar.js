@@ -1,6 +1,7 @@
 import React from "react";
 import { CiSearch } from "react-icons/ci";
 import Avatar from "react-avatar";
+import { Link } from "react-router-dom";
 
 function RightSidebar({ otherUsers }) {
   return (
@@ -35,9 +36,11 @@ function RightSidebar({ otherUsers }) {
                     <p className="text-sm">{`${user?.username}`}</p>
                   </div>
                   <div>
-                    <button className="px-4 py-1 bg-black text-white rounded-full">
-                      Profile
-                    </button>
+                    <Link to={`profile/${user?._id}`}>
+                      <button className="px-4 py-1 bg-black text-white rounded-full">
+                        Profile
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
