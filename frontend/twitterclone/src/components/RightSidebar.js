@@ -21,7 +21,7 @@ function RightSidebar({ otherUsers }) {
             return (
               <div
                 key={user?._id}
-                className="flex item-center justify-between my-3"
+                className="flex items-center justify-between my-3"
               >
                 <div className="flex">
                   <div>
@@ -35,13 +35,13 @@ function RightSidebar({ otherUsers }) {
                     <h1 className="font-bold">{user?.name}</h1>
                     <p className="text-sm">{`${user?.username}`}</p>
                   </div>
-                  <div>
-                    <Link to={`profile/${user?._id}`}>
-                      <button className="px-4 py-1 bg-black text-white rounded-full">
-                        Profile
-                      </button>
-                    </Link>
-                  </div>
+                </div>
+                <div>
+                  <Link to={`profile/${user?._id}`}>
+                    <button className="px-4 py-1 bg-black text-white rounded-full">
+                      Profile
+                    </button>
+                  </Link>
                 </div>
               </div>
             );
