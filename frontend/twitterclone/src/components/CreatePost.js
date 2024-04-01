@@ -5,11 +5,13 @@ import axios from "axios";
 import { TWEET_API_END_POINT } from "../utils/constant";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { getRefresh } from "../redux/tweetSlice";
+import { getAllTweets, getIsActive, getRefresh } from "../redux/tweetSlice";
 
 function CreatePost() {
   const [description, setDescription] = useState("");
   const user = useSelector((store) => store.user.user);
+  const isActive = useSelector((store) => store.tweet.isActive);
+  console.log(isActive);
   const dispatch = useDispatch();
   console.log(user);
   const submitHandler = async () => {
@@ -28,17 +30,40 @@ function CreatePost() {
       }
     } catch (error) {
       // toast.error(error.data["message"]);
-      console.log(error.data);
+      console.log(error);
     }
+    setDescription("");
   };
+
+  const forYouHandler = () => {
+    dispatch(getIsActive(true));
+  };
+  const followingHandler = () => {
+    dispatch(getIsActive(false));
+  };
+
   return (
     <div className="w-[100%]">
-      <div className="">
+      <div>
         <div className="flex items-center justify-evenly border-b border-gray-200">
-          <div className="cursor-pointer hover:bg-gray-200 w-full text-center px-4 py-3">
+          <div
+            onClick={forYouHandler}
+            className={`${
+              isActive
+                ? "border-b-4 border-blue-600"
+                : "border-b-4 border-transparent"
+            } cursor-pointer hover:bg-gray-200 w-full text-center px-4 py-3`}
+          >
             <h1 className="font-semibold text-gray-600 text-lg">For You</h1>
           </div>
-          <div className="cursor-pointer hover:bg-gray-200 w-full text-center ox-3 py-3">
+          <div
+            onClick={followingHandler}
+            className={`${
+              isActive
+                ? "border-b-4 border-transparent"
+                : "border-b-4 border-blue-600"
+            } cursor-pointer hover:bg-gray-200 w-full text-center px-4 py-3`}
+          >
             <h1 className="font-semibold text-gray-600 text-lg">Following</h1>
           </div>
         </div>
