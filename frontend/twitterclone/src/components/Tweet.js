@@ -4,7 +4,7 @@ import { FaRegComment } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
 import axios from "axios";
-import { TWEET_API_END_POINT } from "../utils/constant";
+import { TWEET_API_END_POINT, timeSince } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { getRefresh } from "../redux/tweetSlice";
@@ -15,6 +15,7 @@ const Tweet = ({ tweet }) => {
   const { user } = useSelector((store) => store.user);
   console.log(user?._id);
   const dispatch = useDispatch();
+
   const likeOrDislikeHandler = async (id) => {
     try {
       const res = await axios.put(
@@ -55,7 +56,8 @@ const Tweet = ({ tweet }) => {
             <div className="flex items-center">
               <h1 className="font-bold">{tweet?.userDetails[0]?.name}</h1>
               <p className="text-gray-500 text-sm ml-1">
-                {tweet?.userDetails[0]?.username}
+                {tweet?.userDetails[0]?.username} .{" "}
+                {timeSince(tweet?.createdAt)}
               </p>
             </div>
             <div>
