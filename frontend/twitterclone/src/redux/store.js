@@ -18,12 +18,10 @@ const persistConfig = {
   version: 1,
   storage,
 };
-
 const rootReducer = combineReducers({
   user: userSlice,
   tweet: tweetSlice,
 });
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
