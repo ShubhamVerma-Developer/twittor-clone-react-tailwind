@@ -32,7 +32,7 @@ jobs:
         uses: TheDoctor0/zip-release@0.7.6
         with:
           filename: release.zip
-          path: ./frontend\twitterclone\build/*
+          path: ./twittor-clone-react-tailwind/frontend/twitterclone\build/*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
