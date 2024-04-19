@@ -23,6 +23,7 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          cd ./twittor-clone-react-tailwind/frontend/twitterclone
           npm install
           npm run build --if-present
           npm run test --if-present
@@ -32,7 +33,7 @@ jobs:
         uses: TheDoctor0/zip-release@0.7.6
         with:
           filename: release.zip
-          path: ./twittor-clone-react-tailwind/frontend/twitterclone\build/*
+          path: ./build/*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
